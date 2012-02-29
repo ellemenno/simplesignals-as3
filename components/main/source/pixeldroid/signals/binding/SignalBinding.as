@@ -1,7 +1,7 @@
 
 package pixeldroid.signals.binding
 {
-	import pixeldroid.signals.IPrivateSignal;
+	import pixeldroid.signals.IProtectedSignal;
 	import pixeldroid.signals.ISignal;
 	import pixeldroid.signals.ISignalReceiver;
 
@@ -17,7 +17,7 @@ package pixeldroid.signals.binding
 
 		private var _receiver:ISignalReceiver;
 
-		private var _signal:IPrivateSignal;
+		private var _signal:IProtectedSignal;
 
 		/**
 		 * Constructor.
@@ -29,7 +29,7 @@ package pixeldroid.signals.binding
 		 *
 		 * @throws ArgumentError An error is thrown if the receiver or signal are <code>null</code>.
 		 */
-		public function SignalBinding(receiver:ISignalReceiver, signal:IPrivateSignal, once:Boolean = false, priority:int = 0)
+		public function SignalBinding(receiver:ISignalReceiver, signal:IProtectedSignal, once:Boolean = false, priority:int = 0)
 		{
 			_receiver = receiver;
 			_signal = signal;

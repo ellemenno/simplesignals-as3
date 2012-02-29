@@ -5,7 +5,7 @@ package pixeldroid.signals
 	/**
 	 * IPrivateSignal provides elevated access for signal owners.
 	 */
-	public interface IPrivateSignal extends ISignal
+	public interface IProtectedSignal extends ISignal
 	{
 
 		/**

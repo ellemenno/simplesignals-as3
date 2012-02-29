@@ -10,7 +10,7 @@ package pixeldroid.signals
 	/**
 	 * @inheritDoc
 	 */
-	public class Signal implements IPrivateSignal
+	public class Signal implements IProtectedSignal
 	{
 
 		protected var bindings:SignalBindingList;
