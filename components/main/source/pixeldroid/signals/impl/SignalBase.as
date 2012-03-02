@@ -1,16 +1,15 @@
 
-package pixeldroid.signals
+package pixeldroid.signals.impl
 {
 	import flash.errors.IllegalOperationError;
 	import flash.utils.Dictionary;
-	import pixeldroid.signals.binding.ISignalBinding;
-	import pixeldroid.signals.binding.SignalBinding;
-	import pixeldroid.signals.binding.SignalBindingList;
+	import pixeldroid.signals.ISignal;
+	import pixeldroid.signals.ISignalReceiver;
 
 	/**
 	 * @inheritDoc
 	 */
-	public class Signal implements IProtectedSignal
+	public class SignalBase implements ISignal
 	{
 
 		protected var bindings:SignalBindingList;
@@ -20,7 +19,7 @@ package pixeldroid.signals
 		/**
 		 * Constructor.
 		 */
-		public function Signal()
+		public function SignalBase()
 		{
 			bindings = SignalBindingList.NIL;
 			existing = null;
@@ -44,13 +43,6 @@ package pixeldroid.signals
 		public function get numReceivers():uint  { return bindings.length; }
 
 		/** @inheritDoc */
-		public function removeAllReceivers():void
-		{
-			bindings = SignalBindingList.NIL;
-			existing = null;
-		}
-
-		/** @inheritDoc */
 		public function removeReceiver(value:ISignalReceiver):ISignalReceiver
 		{
 			bindings = bindings.filterNot(value);
@@ -63,8 +55,15 @@ package pixeldroid.signals
 			return value;
 		}
 
-		/** @inheritDoc */
-		public function send(authority:* = null):void
+
+
+		protected function _removeAllReceivers():void
+		{
+			bindings = SignalBindingList.NIL;
+			existing = null;
+		}
+
+		protected function _send(authority:* = null):void
 		{
 			var bindingsToProcess:SignalBindingList = bindings;
 
@@ -79,7 +78,7 @@ package pixeldroid.signals
 		{
 			if (!bindings.nonEmpty || verifyRegistrationOf(receiver, once))
 			{
-				bindings = new SignalBindingList(new SignalBinding(receiver, this, once), bindings);
+				bindings = new SignalBindingList(new SignalBinding(this, receiver, once), bindings);
 
 				if (null == existing)
 					existing = new Dictionary();
@@ -101,7 +100,7 @@ package pixeldroid.signals
 				{
 					// If the listener was previously added, definitely don't add it again.
 					// But throw an exception if their once value differs.
-					throw new IllegalOperationError('You cannot addOnce() then add() the same listener without removing the relationship first.');
+					throw new IllegalOperationError("You cannot use the same receiver for addOneTimeReceiver() and addReceiver() without removing one of the relationships first.");
 				}
 
 				// Listener was already added.

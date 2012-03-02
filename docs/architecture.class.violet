@@ -3,16 +3,28 @@
  <object class="com.horstmann.violet.ClassDiagramGraph"> 
   <void method="addNode"> 
    <object id="ClassNode0" class="com.horstmann.violet.ClassNode"> 
+    <void property="attributes"> 
+     <void property="text"> 
+      <string>private var _signal:IProtectedSignal = new Signal();</string> 
+     </void> 
+    </void> 
+    <void property="methods"> 
+     <void property="text"> 
+      <string>public function get signal():ISignal { return _signal as ISignal; }
+private function onTrigger():void { _signal.send(); }
+private function reset():void { _signal.removeAllReceivers(); }</string> 
+     </void> 
+    </void> 
     <void property="name"> 
      <void property="text"> 
-      <string>SomethingThatSendsSignals</string> 
+      <string>SignalEmitter</string> 
      </void> 
     </void> 
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>218.0</double> 
-     <double>289.0</double> 
+     <double>199.0</double> 
+     <double>399.0</double> 
     </void> 
    </object> 
   </void> 
@@ -20,40 +32,14 @@
    <object id="ClassNode1" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
-      <string>SomethingThatReceivesSignals</string> 
+      <string>SignalReceiver</string> 
      </void> 
     </void> 
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>924.0</double> 
-     <double>286.0</double> 
-    </void> 
-   </object> 
-  </void> 
-  <void method="addNode"> 
-   <object id="NoteNode0" class="com.horstmann.violet.NoteNode"> 
-    <void property="color"> 
-     <object class="java.awt.Color"> 
-      <int>224</int> 
-      <int>255</int> 
-      <int>255</int> 
-      <int>255</int> 
-     </object> 
-    </void> 
-    <void property="text"> 
-     <void property="text"> 
-      <string>private var _signal:IPrivateSignal = new SignalClass();
-public function get signal():ISignal { return _signal as ISignal; }
-private function send():void { _signal.send(); }
-private function reset():void { _signal.removeAllReceivers(); }</string> 
-     </void> 
-    </void> 
-   </object> 
-   <object class="java.awt.geom.Point2D$Double"> 
-    <void method="setLocation"> 
-     <double>448.0</double> 
-     <double>289.0</double> 
+     <double>831.0</double> 
+     <double>417.0</double> 
     </void> 
    </object> 
   </void> 
@@ -67,35 +53,8 @@ private function reset():void { _signal.removeAllReceivers(); }</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>569.0</double> 
-     <double>713.0</double> 
-    </void> 
-   </object> 
-  </void> 
-  <void method="addNode"> 
-   <object class="com.horstmann.violet.ClassNode"> 
-    <void property="attributes"> 
-     <void property="text"> 
-      <string>public const UI_GESTURE_SIGNAL_CLASS
-public const MODEL_UPDATE_SIGNAL_CLASS</string> 
-     </void> 
-    </void> 
-    <void property="methods"> 
-     <void property="text"> 
-      <string>public function get uiSignal():ISignal;
-public function get modelSignal():ISignal;</string> 
-     </void> 
-    </void> 
-    <void property="name"> 
-     <void property="text"> 
-      <string>SignalFactory</string> 
-     </void> 
-    </void> 
-   </object> 
-   <object class="java.awt.geom.Point2D$Double"> 
-    <void method="setLocation"> 
-     <double>882.0</double> 
-     <double>837.0</double> 
+     <double>472.0</double> 
+     <double>904.0</double> 
     </void> 
    </object> 
   </void> 
@@ -109,8 +68,8 @@ public function get modelSignal():ISignal;</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>229.0</double> 
-     <double>709.0</double> 
+     <double>47.0</double> 
+     <double>904.0</double> 
     </void> 
    </object> 
   </void> 
@@ -124,8 +83,8 @@ public function get modelSignal():ISignal;</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>721.0</double> 
-     <double>850.0</double> 
+     <double>722.0</double> 
+     <double>1004.0</double> 
     </void> 
    </object> 
   </void> 
@@ -139,8 +98,8 @@ public function get modelSignal():ISignal;</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>931.0</double> 
-     <double>711.0</double> 
+     <double>47.0</double> 
+     <double>1003.0</double> 
     </void> 
    </object> 
   </void> 
@@ -148,17 +107,17 @@ public function get modelSignal():ISignal;</string>
    <object class="com.horstmann.violet.NoteNode"> 
     <void property="text"> 
      <void property="text"> 
-      <string>Used directly, Signal and SignalReceiver provide a simple publication / subscription interface.
+      <string>For tight coupling, Signal and SignalReceiver provide a simple publication / subscription interface.
 Classes can aggregate signals to declare the events they publish
-PrivateSignal provides elevated access for signal owners
-A Signal authority is generally whatever sent the signal, but may be anything useful, including nothing at all</string> 
+ProtectedSignal provides elevated access for signal owners
+A Signal authority is by convention whatever sent the signal, but may be anything useful, including nothing at all</string> 
      </void> 
     </void> 
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>34.0</double> 
-     <double>43.0</double> 
+     <double>22.0</double> 
+     <double>32.0</double> 
     </void> 
    </object> 
   </void> 
@@ -166,16 +125,17 @@ A Signal authority is generally whatever sent the signal, but may be anything us
    <object class="com.horstmann.violet.NoteNode"> 
     <void property="text"> 
      <void property="text"> 
-      <string>The SignalController provides a notifier / observer approach to delegation.
-Senders broadcast signals to zero or more receivers.
-A SignalReceiver may be thought of as a Command, with the receive() method functioning as execute()</string> 
+      <string>For loose coupling, the SignalController implements a FrontController pattern similar to Cairngorm.
+Receiver classes are paired with GlobalSignals via addConnection()
+Emitters send a GlobalSignal which routes itself through the SignalController who instantiates and executes the connected Receiver.
+SignalReceiver plays the part of a Command, with its receive() method functioning as execute()</string> 
      </void> 
     </void> 
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>27.0</double> 
-     <double>441.0</double> 
+     <double>24.0</double> 
+     <double>547.0</double> 
     </void> 
    </object> 
   </void> 
@@ -183,14 +143,15 @@ A SignalReceiver may be thought of as a Command, with the receive() method funct
    <object id="ClassNode6" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
-      <string>CommandClass</string> 
+      <string> Command
+«ISignalReceiver»</string> 
      </void> 
     </void> 
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>353.0</double> 
-     <double>847.0</double> 
+     <double>710.0</double> 
+     <double>899.0</double> 
     </void> 
    </object> 
   </void> 
@@ -198,19 +159,19 @@ A SignalReceiver may be thought of as a Command, with the receive() method funct
    <object id="ClassNode7" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
-      <string>SignalClass</string> 
+      <string>Signal</string> 
      </void> 
     </void> 
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>60.0</double> 
-     <double>292.0</double> 
+     <double>53.0</double> 
+     <double>426.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="PointNode0" class="com.horstmann.violet.PointNode"> 
+   <object class="com.horstmann.violet.PointNode"> 
     <void id="Rectangle2D$Double0" property="bounds"> 
      <void method="setRect"> 
       <double>420.0</double> 
@@ -274,7 +235,7 @@ removeAllReceivers():void
       </void> 
       <void property="name"> 
        <void property="text"> 
-        <string>«IPrivateSignal»</string> 
+        <string>«IProtectedSignal»</string> 
        </void> 
       </void> 
      </object> 
@@ -283,8 +244,24 @@ removeAllReceivers():void
      <object id="ClassNode8" class="com.horstmann.violet.ClassNode"> 
       <void property="name"> 
        <void property="text"> 
-        <string>Signal</string> 
+        <string>ProtectedSignal</string> 
        </void> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="PackageNode0" class="com.horstmann.violet.PackageNode"> 
+      <void method="addChild"> 
+       <object id="ClassNode9" class="com.horstmann.violet.ClassNode"> 
+        <void property="name"> 
+         <void property="text"> 
+          <string>SignalBase</string> 
+         </void> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="name"> 
+       <string>pixeldroid.signals.impl</string> 
       </void> 
      </object> 
     </void> 
@@ -294,8 +271,8 @@ removeAllReceivers():void
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>30.0</double> 
-     <double>110.0</double> 
+     <double>40.0</double> 
+     <double>100.0</double> 
     </void> 
    </object> 
   </void> 
@@ -303,8 +280,8 @@ removeAllReceivers():void
    <object idref="InterfaceNode0"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>898.0</double> 
-     <double>149.0</double> 
+     <double>752.0</double> 
+     <double>151.0</double> 
     </void> 
    </object> 
   </void> 
@@ -312,8 +289,8 @@ removeAllReceivers():void
    <object idref="InterfaceNode1"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>465.0</double> 
-     <double>148.0</double> 
+     <double>53.0</double> 
+     <double>134.0</double> 
     </void> 
    </object> 
   </void> 
@@ -321,8 +298,8 @@ removeAllReceivers():void
    <object idref="InterfaceNode2"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>216.0</double> 
-     <double>142.0</double> 
+     <double>469.0</double> 
+     <double>140.0</double> 
     </void> 
    </object> 
   </void> 
@@ -330,15 +307,15 @@ removeAllReceivers():void
    <object idref="ClassNode8"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>42.0</double> 
-     <double>150.0</double> 
+     <double>488.0</double> 
+     <double>294.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
    <object class="com.horstmann.violet.PackageNode"> 
     <void method="addChild"> 
-     <object id="ClassNode9" class="com.horstmann.violet.ClassNode"> 
+     <object id="ClassNode10" class="com.horstmann.violet.ClassNode"> 
       <void property="name"> 
        <void property="text"> 
         <string>SignalController</string> 
@@ -350,11 +327,10 @@ removeAllReceivers():void
      <object id="InterfaceNode3" class="com.horstmann.violet.InterfaceNode"> 
       <void property="methods"> 
        <void property="text"> 
-        <string>addSender(sender:ISender, signal:ISignal):void
-removeSender(sender:ISender signal:ISignal):void
-addReceiver(receiver:ISignalReceiver, signalClass:ISignal):void
-removeReceiver(receiver:ISignalReceiver, signalClass:ISignal):void
-removeReceiversForSignal(signalClass:ISignal):void
+        <string>addSignal(signal:ISignal):void
+removeSignal(signal:ISignal):void
+addConnection(signalType:ISignal, receiverClass:ISignalReceiver):void
+removeConnection(signalType:ISignal, receiverClass:ISignalReceiver):void
 </string> 
        </void> 
       </void> 
@@ -365,23 +341,73 @@ removeReceiversForSignal(signalClass:ISignal):void
       </void> 
      </object> 
     </void> 
+    <void method="addChild"> 
+     <object id="InterfaceNode4" class="com.horstmann.violet.InterfaceNode"> 
+      <void property="methods"> 
+       <void property="text"> 
+        <string>get type():IGlobalSignal
+send(authority:*=null):void
+</string> 
+       </void> 
+      </void> 
+      <void property="name"> 
+       <void property="text"> 
+        <string>«IGlobalSignal»</string> 
+       </void> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="ClassNode11" class="com.horstmann.violet.ClassNode"> 
+      <void property="name"> 
+       <void property="text"> 
+        <string>GlobalSignal</string> 
+       </void> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="PackageNode1" class="com.horstmann.violet.PackageNode"> 
+      <void method="addChild"> 
+       <object id="ClassNode12" class="com.horstmann.violet.ClassNode"> 
+        <void property="name"> 
+         <void property="text"> 
+          <string>SignalBase</string> 
+         </void> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="name"> 
+       <string>pixeldroid.signals.impl</string> 
+      </void> 
+     </object> 
+    </void> 
+    <void method="addChild"> 
+     <object id="InterfaceNode5" class="com.horstmann.violet.InterfaceNode"> 
+      <void property="name"> 
+       <void property="text"> 
+        <string>«ISignal»</string> 
+       </void> 
+      </void> 
+     </object> 
+    </void> 
     <void property="name"> 
      <string>pixeldroid.signals</string> 
     </void> 
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>30.0</double> 
-     <double>510.0</double> 
+     <double>40.0</double> 
+     <double>620.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object idref="ClassNode9"/> 
+   <object idref="ClassNode10"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>568.0</double> 
-     <double>574.0</double> 
+     <double>468.0</double> 
+     <double>789.0</double> 
     </void> 
    </object> 
   </void> 
@@ -389,73 +415,101 @@ removeReceiversForSignal(signalClass:ISignal):void
    <object idref="InterfaceNode3"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>37.0</double> 
-     <double>540.0</double> 
+     <double>463.0</double> 
+     <double>648.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="InterfaceNode4"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>215.0</double> 
+     <double>651.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="ClassNode11"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>248.0</double> 
+     <double>792.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode13" class="com.horstmann.violet.ClassNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>GestureSignal
+«ISignal»</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>248.0</double> 
+     <double>902.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="ClassNode9"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>179.0</double> 
+     <double>294.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode0"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>170.0</double> 
+     <double>260.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode1"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>50.0</double> 
+     <double>760.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="ClassNode12"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>56.0</double> 
+     <double>789.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="InterfaceNode5"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>65.0</double> 
+     <double>651.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
-    </void> 
     <void property="endArrowHead"> 
      <object class="com.horstmann.violet.ArrowHead" field="V"/> 
     </void> 
     <void property="middleLabel"> 
-     <string>addSender(this, uiSignal)</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode3"/> 
-   <object idref="ClassNode2"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
-    </void> 
-    <void property="middleLabel"> 
-     <string>addSender(this, modelSignal)</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode4"/> 
-   <object idref="ClassNode2"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
-    </void> 
-    <void property="middleLabel"> 
-     <string>addReceiver(this, MODEL_UPDATE)</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode5"/> 
-   <object idref="ClassNode2"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
-    </void> 
-    <void property="lineStyle"> 
-     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+     <string>write</string> 
     </void> 
    </object> 
    <object idref="ClassNode6"/> 
    <object idref="ClassNode4"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
-    </void> 
-    <void property="middleLabel"> 
-     <string>addReceiver(this, UI_GESTURE)</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode6"/> 
-   <object idref="ClassNode2"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -470,11 +524,6 @@ removeReceiversForSignal(signalClass:ISignal):void
    <object idref="ClassNode7"/> 
   </void> 
   <void method="connect"> 
-   <object class="com.horstmann.violet.NoteEdge"/> 
-   <object idref="NoteNode0"/> 
-   <object idref="PointNode0"/> 
-  </void> 
-  <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
     <void property="bentStyle"> 
      <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
@@ -488,18 +537,6 @@ removeReceiversForSignal(signalClass:ISignal):void
    </object> 
    <object idref="ClassNode8"/> 
    <object idref="InterfaceNode2"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="bentStyle"> 
-     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
-    </void> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
-    </void> 
-   </object> 
-   <object idref="InterfaceNode2"/> 
-   <object idref="InterfaceNode1"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.NoteEdge"/> 
@@ -545,7 +582,7 @@ removeReceiversForSignal(signalClass:ISignal):void
      <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
     </void> 
    </object> 
-   <object idref="ClassNode9"/> 
+   <object idref="ClassNode10"/> 
    <object idref="InterfaceNode3"/> 
   </void> 
   <void method="connect"> 
@@ -556,9 +593,170 @@ removeReceiversForSignal(signalClass:ISignal):void
     <void property="endArrowHead"> 
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
+    <void property="middleLabel"> 
+     <string>addConnection(GestureSignal, CommandClass)</string> 
+    </void> 
    </object> 
    <object idref="ClassNode2"/> 
+   <object idref="ClassNode10"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="startLabel"> 
+     <string>SignalEmitter.signal.addReceiver(this)</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode1"/> 
+   <object idref="ClassNode0"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.NoteEdge"/> 
+   <object idref="ClassNode11"/> 
+   <object idref="ClassNode11"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode11"/> 
+   <object idref="InterfaceNode4"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>addSignal(this)</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode11"/> 
+   <object idref="ClassNode10"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>new().receive()</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode2"/> 
+   <object idref="ClassNode6"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>read</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode5"/> 
+   <object idref="ClassNode4"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>new().send()</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode3"/> 
+   <object idref="ClassNode13"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode13"/> 
+   <object idref="ClassNode11"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode8"/> 
    <object idref="ClassNode9"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode9"/> 
+   <object idref="InterfaceNode1"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode11"/> 
+   <object idref="ClassNode12"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode12"/> 
+   <object idref="InterfaceNode5"/> 
   </void> 
  </object> 
 </java> 

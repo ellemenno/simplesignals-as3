@@ -1,7 +1,6 @@
 
-package pixeldroid.signals.binding
+package pixeldroid.signals.impl
 {
-	import pixeldroid.signals.IProtectedSignal;
 	import pixeldroid.signals.ISignal;
 	import pixeldroid.signals.ISignalReceiver;
 
@@ -17,22 +16,22 @@ package pixeldroid.signals.binding
 
 		private var _receiver:ISignalReceiver;
 
-		private var _signal:IProtectedSignal;
+		private var _signal:ISignal;
 
 		/**
 		 * Constructor.
 		 *
-		 * @param receiver The receiver to associate with a signal.
 		 * @param signal The signal to associate with a receiver.
+		 * @param receiver The receiver to associate with a signal.
 		 * @param once When true, the listener will be executed only once.
 		 * @param priority The priority of the binding.
 		 *
 		 * @throws ArgumentError An error is thrown if the receiver or signal are <code>null</code>.
 		 */
-		public function SignalBinding(receiver:ISignalReceiver, signal:IProtectedSignal, once:Boolean = false, priority:int = 0)
+		public function SignalBinding(signal:ISignal, receiver:ISignalReceiver, once:Boolean = false, priority:int = 0)
 		{
-			_receiver = receiver;
 			_signal = signal;
+			_receiver = receiver;
 			_once = once;
 			_priority = priority;
 

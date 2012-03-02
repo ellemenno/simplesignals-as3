@@ -1,5 +1,5 @@
 
-package pixeldroid.signals.binding
+package pixeldroid.signals.impl
 {
 	import pixeldroid.signals.ISignalReceiver;
 

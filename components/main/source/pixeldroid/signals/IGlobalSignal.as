@@ -1,17 +1,11 @@
-
 package pixeldroid.signals
 {
 
 	/**
-	 * IProtectedSignal provides elevated access for signal owners.
+	 * IGlobalSignal can be sent from anywhere, and is designed to route through a front controller.
 	 */
-	public interface IProtectedSignal
+	public interface IGlobalSignal
 	{
-
-		/**
-		 * Unsubscribes all receivers from the signal.
-		 */
-		function removeAllReceivers():void;
 
 		/**
 		 * Causes the signal to be emitted to all subscribed receivers
@@ -19,5 +13,10 @@ package pixeldroid.signals
 		 * @param authority An optional value to be passed to the receiver; conventionally a source of info about the signal
 		 */
 		function send(authority:* = null):void;
+
+		/**
+		 * Retrieves the unique type of the signal.
+		 */
+		function get type():IGlobalSignal;
 	}
 }

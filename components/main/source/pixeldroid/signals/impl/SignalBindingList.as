@@ -1,10 +1,10 @@
 
-package pixeldroid.signals.binding
+package pixeldroid.signals.impl
 {
 	import pixeldroid.signals.ISignalReceiver;
 
 	/**
-	 * A linked list of ISignalBinding implementors used by Signal to efficiently traverse all receivers.
+	 * A linked list of ISignalBinding implementors used by Signal for efficient traversal.
 	 *
 	 * <p>
 	 * Original implementation from Joa Ebert. Any bugs are most likely not his. :)
