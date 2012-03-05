@@ -2,6 +2,7 @@
 package pixeldroid.signals
 {
 	import pixeldroid.signals.impl.SignalBase;
+	import pixeldroid.signals.impl.SignalRegistry;
 
 	public class GlobalSignal extends SignalBase implements IGlobalSignal
 	{
@@ -12,18 +13,14 @@ package pixeldroid.signals
 		public function GlobalSignal()
 		{
 			super();
+
+			SignalRegistry.getInstance().addSignal(this);
 		}
 
 		/** @inheritDoc */
 		public function send(authority:* = null):void
 		{
 			super._send(authority);
-		}
-
-		/** @inheritDoc */
-		public function get type():IGlobalSignal
-		{
-			return this;
 		}
 	}
 }

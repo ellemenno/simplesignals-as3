@@ -53,8 +53,8 @@ private function reset():void { _signal.removeAllReceivers(); }</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>472.0</double> 
-     <double>904.0</double> 
+     <double>826.0</double> 
+     <double>928.0</double> 
     </void> 
    </object> 
   </void> 
@@ -69,7 +69,7 @@ private function reset():void { _signal.removeAllReceivers(); }</string>
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
      <double>47.0</double> 
-     <double>904.0</double> 
+     <double>933.0</double> 
     </void> 
    </object> 
   </void> 
@@ -83,8 +83,8 @@ private function reset():void { _signal.removeAllReceivers(); }</string>
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>722.0</double> 
-     <double>1004.0</double> 
+     <double>592.0</double> 
+     <double>1030.0</double> 
     </void> 
    </object> 
   </void> 
@@ -99,7 +99,7 @@ private function reset():void { _signal.removeAllReceivers(); }</string>
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
      <double>47.0</double> 
-     <double>1003.0</double> 
+     <double>1032.0</double> 
     </void> 
    </object> 
   </void> 
@@ -127,7 +127,7 @@ A Signal authority is by convention whatever sent the signal, but may be anythin
      <void property="text"> 
       <string>For loose coupling, the SignalController implements a FrontController pattern similar to Cairngorm.
 Receiver classes are paired with GlobalSignals via addConnection()
-Emitters send a GlobalSignal which routes itself through the SignalController who instantiates and executes the connected Receiver.
+Emitters send a GlobalSignal which the SignalRegistry routes to a SignalController who instantiates and executes the connected Receiver.
 SignalReceiver plays the part of a Command, with its receive() method functioning as execute()</string> 
      </void> 
     </void> 
@@ -150,8 +150,8 @@ SignalReceiver plays the part of a Command, with its receive() method functionin
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>710.0</double> 
-     <double>899.0</double> 
+     <double>580.0</double> 
+     <double>931.0</double> 
     </void> 
    </object> 
   </void> 
@@ -327,16 +327,15 @@ removeAllReceivers():void
      <object id="InterfaceNode3" class="com.horstmann.violet.InterfaceNode"> 
       <void property="methods"> 
        <void property="text"> 
-        <string>addSignal(signal:ISignal):void
-removeSignal(signal:ISignal):void
-addConnection(signalType:ISignal, receiverClass:ISignalReceiver):void
-removeConnection(signalType:ISignal, receiverClass:ISignalReceiver):void
+        <string>addConnection(signalClass:Class, receiverClass:Class):void
+removeConnection(signalClass:Class):void
 </string> 
        </void> 
       </void> 
       <void property="name"> 
        <void property="text"> 
-        <string>«ISignalController»</string> 
+        <string>«ISignalController»
+extends «ISignalReceiver»</string> 
        </void> 
       </void> 
      </object> 
@@ -345,8 +344,7 @@ removeConnection(signalType:ISignal, receiverClass:ISignalReceiver):void
      <object id="InterfaceNode4" class="com.horstmann.violet.InterfaceNode"> 
       <void property="methods"> 
        <void property="text"> 
-        <string>get type():IGlobalSignal
-send(authority:*=null):void
+        <string>send(authority:*=null):void
 </string> 
        </void> 
       </void> 
@@ -391,6 +389,50 @@ send(authority:*=null):void
       </void> 
      </object> 
     </void> 
+    <void method="addChild"> 
+     <object id="PackageNode2" class="com.horstmann.violet.PackageNode"> 
+      <void method="addChild"> 
+       <object id="InterfaceNode6" class="com.horstmann.violet.InterfaceNode"> 
+        <void property="methods"> 
+         <void property="text"> 
+          <string>addSignal(value:ISignal):void
+removeSignal(value:ISignal):void
+addController(value:ISignalController):void
+removeController(value:ISignalController):void
+</string> 
+         </void> 
+        </void> 
+        <void property="name"> 
+         <void property="text"> 
+          <string>«ISignalRegistry»</string> 
+         </void> 
+        </void> 
+       </object> 
+      </void> 
+      <void method="addChild"> 
+       <object id="ClassNode13" class="com.horstmann.violet.ClassNode"> 
+        <void property="attributes"> 
+         <void property="text"> 
+          <string>«static»</string> 
+         </void> 
+        </void> 
+        <void property="methods"> 
+         <void property="text"> 
+          <string>getInstance():ISignalRegistry</string> 
+         </void> 
+        </void> 
+        <void property="name"> 
+         <void property="text"> 
+          <string>SignalRegistry</string> 
+         </void> 
+        </void> 
+       </object> 
+      </void> 
+      <void property="name"> 
+       <string>pixeldroid.signals.impl</string> 
+      </void> 
+     </object> 
+    </void> 
     <void property="name"> 
      <string>pixeldroid.signals</string> 
     </void> 
@@ -406,8 +448,8 @@ send(authority:*=null):void
    <object idref="ClassNode10"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>468.0</double> 
-     <double>789.0</double> 
+     <double>837.0</double> 
+     <double>823.0</double> 
     </void> 
    </object> 
   </void> 
@@ -415,8 +457,8 @@ send(authority:*=null):void
    <object idref="InterfaceNode3"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>463.0</double> 
-     <double>648.0</double> 
+     <double>755.0</double> 
+     <double>647.0</double> 
     </void> 
    </object> 
   </void> 
@@ -433,13 +475,13 @@ send(authority:*=null):void
    <object idref="ClassNode11"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>248.0</double> 
-     <double>792.0</double> 
+     <double>249.0</double> 
+     <double>818.0</double> 
     </void> 
    </object> 
   </void> 
   <void method="addNode"> 
-   <object id="ClassNode13" class="com.horstmann.violet.ClassNode"> 
+   <object id="ClassNode14" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
       <string>GestureSignal
@@ -450,7 +492,7 @@ send(authority:*=null):void
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
      <double>248.0</double> 
-     <double>902.0</double> 
+     <double>931.0</double> 
     </void> 
    </object> 
   </void> 
@@ -477,7 +519,7 @@ send(authority:*=null):void
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
      <double>50.0</double> 
-     <double>760.0</double> 
+     <double>790.0</double> 
     </void> 
    </object> 
   </void> 
@@ -485,8 +527,8 @@ send(authority:*=null):void
    <object idref="ClassNode12"/> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>56.0</double> 
-     <double>789.0</double> 
+     <double>57.0</double> 
+     <double>815.0</double> 
     </void> 
    </object> 
   </void> 
@@ -496,6 +538,33 @@ send(authority:*=null):void
     <void method="setLocation"> 
      <double>65.0</double> 
      <double>651.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="ClassNode13"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>477.0</double> 
+     <double>817.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="InterfaceNode6"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>435.0</double> 
+     <double>680.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object idref="PackageNode2"/> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>430.0</double> 
+     <double>650.0</double> 
     </void> 
    </object> 
   </void> 
@@ -594,7 +663,7 @@ send(authority:*=null):void
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
     <void property="middleLabel"> 
-     <string>addConnection(GestureSignal, CommandClass)</string> 
+     <string>addConnection(GestureSignal, Command)</string> 
     </void> 
    </object> 
    <object idref="ClassNode2"/> 
@@ -637,33 +706,6 @@ send(authority:*=null):void
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
-    </void> 
-    <void property="lineStyle"> 
-     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
-    </void> 
-    <void property="middleLabel"> 
-     <string>addSignal(this)</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode11"/> 
-   <object idref="ClassNode10"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
-    <void property="endArrowHead"> 
-     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
-    </void> 
-    <void property="middleLabel"> 
-     <string>new().receive()</string> 
-    </void> 
-   </object> 
-   <object idref="ClassNode2"/> 
-   <object idref="ClassNode6"/> 
-  </void> 
-  <void method="connect"> 
-   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
     <void property="bentStyle"> 
      <object class="com.horstmann.violet.BentStyle" field="HVH"/> 
     </void> 
@@ -690,7 +732,7 @@ send(authority:*=null):void
     </void> 
    </object> 
    <object idref="ClassNode3"/> 
-   <object idref="ClassNode13"/> 
+   <object idref="ClassNode14"/> 
   </void> 
   <void method="connect"> 
    <object class="com.horstmann.violet.ClassRelationshipEdge"> 
@@ -701,7 +743,7 @@ send(authority:*=null):void
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode13"/> 
+   <object idref="ClassNode14"/> 
    <object idref="ClassNode11"/> 
   </void> 
   <void method="connect"> 
@@ -757,6 +799,63 @@ send(authority:*=null):void
    </object> 
    <object idref="ClassNode12"/> 
    <object idref="InterfaceNode5"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>new().receive()</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode10"/> 
+   <object idref="ClassNode6"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="bentStyle"> 
+     <object class="com.horstmann.violet.BentStyle" field="VHV"/> 
+    </void> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+   </object> 
+   <object idref="ClassNode13"/> 
+   <object idref="InterfaceNode6"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>addSignal()</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode11"/> 
+   <object idref="ClassNode13"/> 
+  </void> 
+  <void method="connect"> 
+   <object class="com.horstmann.violet.ClassRelationshipEdge"> 
+    <void property="endArrowHead"> 
+     <object class="com.horstmann.violet.ArrowHead" field="V"/> 
+    </void> 
+    <void property="lineStyle"> 
+     <object class="com.horstmann.violet.LineStyle" field="DOTTED"/> 
+    </void> 
+    <void property="middleLabel"> 
+     <string>addController()</string> 
+    </void> 
+   </object> 
+   <object idref="ClassNode10"/> 
+   <object idref="ClassNode13"/> 
   </void> 
  </object> 
 </java> 
