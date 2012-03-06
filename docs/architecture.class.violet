@@ -484,8 +484,7 @@ removeController(value:ISignalController):void
    <object id="ClassNode14" class="com.horstmann.violet.ClassNode"> 
     <void property="name"> 
      <void property="text"> 
-      <string>GestureSignal
-«ISignal»</string> 
+      <string>GestureSignal</string> 
      </void> 
     </void> 
    </object> 

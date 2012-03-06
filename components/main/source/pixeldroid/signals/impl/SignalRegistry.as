@@ -34,7 +34,7 @@ package pixeldroid.signals.impl
 		public function addSignal(value:ISignal):void
 		{
 			if (value is IGlobalSignal)
-				value.addReceiver(this);
+				value.addOneTimeReceiver(this);
 			else
 				throw new ArgumentError("signal must implement IGlobalSignal interface");
 		}
