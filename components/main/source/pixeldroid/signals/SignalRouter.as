@@ -3,6 +3,7 @@ package pixeldroid.signals
 {
 	import flash.utils.Dictionary;
 	import flash.utils.describeType;
+	import flash.utils.getQualifiedClassName;
 
 	import pixeldroid.signals.impl.SignalTransmitter;
 
