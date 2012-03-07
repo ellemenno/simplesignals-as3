@@ -1,9 +1,12 @@
-package
+
+package protectedsignal
 {
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	import flash.utils.getTimer;
+
 	import pixeldroid.signals.ProtectedSignal;
+
 
 	public class TimeSignal extends ProtectedSignal
 	{
@@ -15,6 +18,7 @@ package
 		public var remaining:int = 0;
 
 		protected var timer:Timer;
+
 
 		public function TimeSignal(howMany:int = 5, interval:int = 1000)
 		{
@@ -43,4 +47,5 @@ package
 			current = now;
 		}
 	}
+
 }

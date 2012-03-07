@@ -1,9 +1,12 @@
-package
+
+package protectedsignal
 {
 	import flash.display.Sprite;
 	import flash.text.TextField;
+
 	import pixeldroid.signals.ISignal;
 	import pixeldroid.signals.ISignalReceiver;
+
 
 	[SWF(width="600", height="350")]
 	public class ProtectedSignalTest extends Sprite implements ISignalReceiver
@@ -11,6 +14,7 @@ package
 		protected var textField:TextField;
 
 		protected const timeSignal:TimeSignal = new TimeSignal();
+
 
 		public function ProtectedSignalTest()
 		{
