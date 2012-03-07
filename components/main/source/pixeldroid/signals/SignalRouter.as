@@ -1,20 +1,21 @@
 
 package pixeldroid.signals
 {
-	// http://svn.code.sf.net/adobe/cairngorm/code/cairngorm/trunk/frameworks/cairngorm/com/adobe/cairngorm/control/FrontController.as
-
 	import flash.utils.Dictionary;
 	import flash.utils.describeType;
-	import flash.utils.getDefinitionByName;
-	import flash.utils.getQualifiedClassName;
 
-	public class SignalController implements ISignalController, ISignalReceiver
+	import pixeldroid.signals.impl.SignalTransmitter;
+
+
+	public class SignalRouter implements ISignalRouter
 	{
-		private var connections:Dictionary;
+		protected var connections:Dictionary;
 
-		public function SignalController()
+
+		public function SignalRouter()
 		{
 			connections = new Dictionary();
+			SignalTransmitter.getInstance().addRouter(this);
 		}
 
 		/** @inheritDoc */
@@ -30,11 +31,8 @@ package pixeldroid.signals
 		}
 
 		/** @private */
-		public function receive(signal:ISignal, authority:* = null):void
+		public function forwardSignal(signalClass:Class, signal:ISignal, authority:* = null):void
 		{
-			var signalClassName:String = getQualifiedClassName(signal);
-			var signalClass:Class = getDefinitionByName(signalClassName);
-
 			if (connections[signalClass])
 			{
 				var ReceiverClass:Class = connections[signalClass];
@@ -48,15 +46,21 @@ package pixeldroid.signals
 		}
 
 		/** @inheritDoc */
+		public function hasConnection(signalClass:Class):Boolean
+		{
+			return (connections[signalClass] != null);
+		}
+
+		/** @inheritDoc */
 		public function removeConnection(signalClass:Class):void
 		{
 			if (connections[signalClass])
-				connections[signalClass] = null;
+				delete connections[signalClass];
 		}
 
-		private function implementsInterface(unknown:Class, interfaceClass:Class):Boolean
+		private function implementsInterface(unknownClass:Class, interfaceClass:Class):Boolean
 		{
-			var classDescription:XML = describeType(unknown) as XML;
+			var classDescription:XML = describeType(unknownClass) as XML;
 
 			return classDescription.factory.implementsInterface.(@type == getQualifiedClassName(interfaceClass)).length() != 0;
 		}

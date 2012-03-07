@@ -3,6 +3,7 @@ package pixeldroid.signals
 {
 	import pixeldroid.signals.impl.SignalBase;
 
+
 	public class ProtectedSignal extends SignalBase implements IProtectedSignal
 	{
 

@@ -4,10 +4,10 @@
     <classEntry path="pixeldroid.signals.IGlobalSignal"/>
     <classEntry path="pixeldroid.signals.impl.SignalBase"/>
     <classEntry path="pixeldroid.signals.GlobalSignal"/>
-    <classEntry path="pixeldroid.signals.ISignalController"/>
-    <classEntry path="pixeldroid.signals.SignalController"/>
-    <classEntry path="pixeldroid.signals.impl.ISignalRegistry"/>
-    <classEntry path="pixeldroid.signals.impl.SignalRegistry"/>
+    <classEntry path="pixeldroid.signals.ISignalRouter"/>
+    <classEntry path="pixeldroid.signals.SignalRouter"/>
+    <classEntry path="pixeldroid.signals.impl.ISignalTransmitter"/>
+    <classEntry path="pixeldroid.signals.impl.SignalTransmitter"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

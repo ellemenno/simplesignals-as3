@@ -2,6 +2,7 @@
 package pixeldroid.signals
 {
 
+
 	/**
 	 * IProtectedSignal provides elevated access for signal owners.
 	 */

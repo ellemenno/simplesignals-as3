@@ -2,6 +2,7 @@
 package pixeldroid.signals
 {
 
+
 	/**
 	 * A SignalReceiver is able to subscribe to signals.
 	 */

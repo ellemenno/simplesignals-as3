@@ -2,7 +2,8 @@
 package pixeldroid.signals
 {
 	import pixeldroid.signals.impl.SignalBase;
-	import pixeldroid.signals.impl.SignalRegistry;
+	import pixeldroid.signals.impl.SignalTransmitter;
+
 
 	public class GlobalSignal extends SignalBase implements IGlobalSignal
 	{
@@ -14,7 +15,7 @@ package pixeldroid.signals
 		{
 			super();
 
-			SignalRegistry.getInstance().addSignal(this);
+			SignalTransmitter.getInstance().addSignal(this);
 		}
 
 		/** @inheritDoc */

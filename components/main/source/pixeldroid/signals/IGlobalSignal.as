@@ -1,5 +1,7 @@
+
 package pixeldroid.signals
 {
+
 
 	/**
 	 * IGlobalSignal can be sent from anywhere, and is designed to route through a global registry to a front controller.

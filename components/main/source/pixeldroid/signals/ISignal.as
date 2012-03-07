@@ -2,6 +2,7 @@
 package pixeldroid.signals
 {
 
+
 	/**
 	 * A Signal is a simple, strongly typed event publication interface.
 	 * Classes can aggregate signals to declare the events they publish.
