@@ -29,6 +29,8 @@ package globalsignal
 
 		private function render(g:Graphics, c:uint, w:Number, h:Number):void
 		{
+			g.clear();
+
 			g.lineStyle(1, 0x000000);
 			g.beginFill(c);
 			g.drawRect(0, 0, w, h);
