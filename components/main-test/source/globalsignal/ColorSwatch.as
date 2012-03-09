@@ -17,14 +17,14 @@ package globalsignal
 		{
 			w = width;
 			h = height;
-			render(this.graphics, color, w, h);
+			render(graphics, color, w, h);
 
-			this.addEventListener(Event.ENTER_FRAME, onFrameEntered);
+			addEventListener(Event.ENTER_FRAME, onFrameEntered);
 		}
 
 		public function onFrameEntered(event:Event):void
 		{
-			render(this.graphics, Model.getInstance().currentColor, w, h);
+			render(graphics, Model.getInstance().currentColor, w, h);
 		}
 
 		private function render(g:Graphics, c:uint, w:Number, h:Number):void

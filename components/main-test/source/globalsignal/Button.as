@@ -14,7 +14,7 @@ package globalsignal
 			useHandCursor = true;
 			render(graphics);
 
-			this.addEventListener(MouseEvent.CLICK, onButtonClicked);
+			addEventListener(MouseEvent.CLICK, onButtonClicked);
 		}
 
 		private function onButtonClicked(event:MouseEvent):void

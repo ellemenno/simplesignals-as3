@@ -12,10 +12,10 @@ package globalsignal
 
 		public function GlobalSignalTest()
 		{
+			controller = new Controller();
+
 			var b:Button = addButton();
 			var c:ColorSwatch = addSwatch();
-
-			controller = new Controller();
 		}
 
 		private function addButton():Button
