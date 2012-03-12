@@ -8,6 +8,8 @@
     <classEntry path="pixeldroid.signals.SignalRouter"/>
     <classEntry path="pixeldroid.signals.impl.ISignalTransmitter"/>
     <classEntry path="pixeldroid.signals.impl.SignalTransmitter"/>
+    <classEntry path="pixeldroid.signals.ISignalBus"/>
+    <classEntry path="pixeldroid.signals.impl.SignalBusBase"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

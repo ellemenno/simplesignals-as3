@@ -33,8 +33,9 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
-    <application path="protectedsignal/ProtectedSignalTest.as"/>
+    <application path="signalbus/SignalBusTest.as"/>
     <application path="globalsignal/GlobalSignalTest.as"/>
+    <application path="protectedsignal/ProtectedSignalTest.as"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
